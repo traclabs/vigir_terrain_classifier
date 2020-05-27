@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(vigir_terrain_classifier)
 
+add_compile_options(-std=c++11)
+
 #set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
@@ -137,7 +139,7 @@ add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 ## Declare a cpp executable
 add_executable(point_cloud_portioner_node src/point_cloud_portioner_node.cpp)
 add_executable(terrain_classifier_node src/terrain_classifier_node.cpp)
-add_executable(terrain_classifier_test src/terrain_classifier_test.cpp)
+# add_executable(terrain_classifier_test src/terrain_classifier_test.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -147,7 +149,7 @@ add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS} ${PROJECT_NAME}_gene
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${boost_LIBRARIES} ${PCL_LIBRARIES})
 target_link_libraries(point_cloud_portioner_node ${PROJECT_NAME})
 target_link_libraries(terrain_classifier_node ${PROJECT_NAME})
-target_link_libraries(terrain_classifier_test ${PROJECT_NAME})
+# target_link_libraries(terrain_classifier_test ${PROJECT_NAME})
 
 #############
 ## Install ##
@@ -164,7 +166,7 @@ target_link_libraries(terrain_classifier_test ${PROJECT_NAME})
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS ${PROJECT_NAME} terrain_classifier_node terrain_classifier_test
+install(TARGETS ${PROJECT_NAME} terrain_classifier_node #terrain_classifier_test
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
